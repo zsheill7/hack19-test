@@ -36,7 +36,7 @@ passport.use(
       const user = await new User({ googleId: profile.id }).save();
       done(null, user);
     }
-  ),
+  ) /*,
   new Auth0Strategy(
     {
       domain: 'agromo.auth0.com',
@@ -57,5 +57,5 @@ passport.use(
       auth.login();
       return done(null, profile);
     }
-  )
+  )*/
 );

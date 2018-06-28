@@ -4,9 +4,11 @@ import DropzoneComponent from 'react-dropzone-component';
 import '../utils/dropzone.min.css';
 import upload from 'superagent';
 
+//const Dropzone = require('react-dropzone');
+
 var componentConfig = {
-  iconFiletypes: ['.jpg', '.png', '.gif', '.obj'],
-  showFiletypeIcon: true,
+  //iconFiletypes: ['.jpg', '.png', '.gif', '.obj'],
+  //showFiletypeIcon: true,
   postUrl: '/uploadHandler'
 };
 var djsConfig = { autoProcessQueue: false };
@@ -15,7 +17,7 @@ var eventHandlers = { addedfile: file => console.log(file) };
 class Dropzone extends Component {
   onDrop(files) {
     upload
-      .post('/upload')
+      .post('/uploadHandler')
       .attach('theseNamesMustMatch', files[0])
       .end((err, res) => {
         if (err) console.log(err);
@@ -27,8 +29,9 @@ class Dropzone extends Component {
       <div style={{ height: '100px' }}>
         <DropzoneComponent
           config={componentConfig}
-          djsConfig={djsConfig}
+          //djsConfig={djsConfig}
           eventHandlers={this.onDrop.bind(this)}
+          //onDrop={this.onDrop.bind(this)}
         />
       </div>
     );
