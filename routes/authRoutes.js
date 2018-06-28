@@ -3,6 +3,7 @@ const multer = require('multer');
 const passport = require('passport');
 var AWS = require('aws-sdk');
 var s3 = new AWS.S3();
+const keys = require('../config/keys');
 // Make sure you set this env variable correctly
 var bucketName = process.env.AWS_BUCKET_NAME;
 AWS.config.update({
