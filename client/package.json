@@ -26,7 +26,8 @@
     "redux": "^3.7.1",
     "redux-form": "^7.0.1",
     "redux-thunk": "^2.2.0",
-    "restuta-react-dropzone-s3-uploader": "^0.20.4"
+    "restuta-react-dropzone-s3-uploader": "^0.20.4",
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",

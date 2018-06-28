@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import DropzoneComponent from 'react-dropzone-component';
 import '../utils/dropzone.min.css';
+import upload from 'superagent';
 
 var componentConfig = {
   iconFiletypes: ['.jpg', '.png', '.gif', '.obj'],
