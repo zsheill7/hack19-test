@@ -1,14 +1,5 @@
 const express = require('express');
-const multer = require('multer');
 const passport = require('passport');
-
-// Multer config
-// memory storage keeps file data in a buffer
-const upload = multer({
-  storage: multer.memoryStorage(),
-  // file size limitation in bytes
-  limits: { fileSize: 52428800 }
-});
 
 module.exports = app => {
   app.get(
