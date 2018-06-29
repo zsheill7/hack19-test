@@ -19,7 +19,9 @@
   "dependencies": {
     "aws-sdk": "^2.265.1",
     "axios": "^0.16.2",
+    "bcrypt": "^2.0.1",
     "materialize-css": "^0.99.0",
+    "mongo": "^0.1.0",
     "proxy-agent": "^3.0.0",
     "react": "^16.0.0-alpha.13",
     "react-bootstrap": "^0.32.1",

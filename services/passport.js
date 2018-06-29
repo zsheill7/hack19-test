@@ -3,7 +3,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const Auth0Strategy = require('passport-auth0');
-
+import mongo from 'mongo';
+import bcrypt from 'bcrypt';
 const User = mongoose.model('users');
 
 const auth0 = require('auth0-js');
@@ -27,13 +28,13 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile.id });
+      const existingUser = await User.findOne({ userId: profile.id });
 
       if (existingUser) {
         return done(null, existingUser);
       }
 
-      const user = await new User({ googleId: profile.id }).save();
+      const user = await new User({ userId: profile.id }).save();
       done(null, user);
     }
   ) /*,

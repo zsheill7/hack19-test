@@ -1,11 +1,18 @@
 import history from '../history';
 import auth0 from 'auth0-js';
-import keys from '../../config/keys';
+import keys from '../config/keys';
+
+//import mongo from 'mongo';
+//import bcrypt from 'bcrypt';
+//import mongoose from 'mongoose';
+import request from 'superagent';
+
+//const User = mongoose.model('users');
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: keys.auth0Domain,
-    clientID: keys.auth0ClientId,
+    clientID: keys.auth0ClientID,
     redirectUri: keys.callbackUrl,
     audience: `https://${keys.auth0Domain}/userinfo`,
     responseType: 'token id_token',
@@ -19,8 +26,23 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  login() {
-    this.auth0.authorize();
+  async login(email, password, callback) {
+    request
+      .post('/auth/auth0')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({ email: email, password: password })
+      .end(function(err, res) {
+        console.log(res.text);
+      });
+    // auth0.parseHash({ hash: window.location.hash }, function(err, authResult) {
+    //   if (err) {
+    //     return console.log(err);
+    //   }
+    //
+    //   auth0.client.userInfo(authResult.accessToken, function(err, user) {
+    //
+    //   });
+    // });
   }
 
   handleAuthentication() {
