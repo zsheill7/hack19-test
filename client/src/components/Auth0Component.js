@@ -6,9 +6,9 @@ import Auth from '../Auth/Auth.js';
 import keys from '../config/keys';
 
 class Auth0Component extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     var options = {};
-    const auth = new Auth();
+    const auth = await new Auth();
     auth.login();
   }
 

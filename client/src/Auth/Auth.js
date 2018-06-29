@@ -10,7 +10,7 @@ import request from 'superagent';
 //const User = mongoose.model('users');
 
 export default class Auth {
-  auth0 = new auth0.WebAuth({
+  webAuth = new auth0.WebAuth({
     domain: keys.auth0Domain,
     clientID: keys.auth0ClientID,
     redirectUri: keys.callbackUrl,
@@ -26,27 +26,27 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  async login(email, password, callback) {
-    request
-      .post('/auth/auth0')
-      .set('Content-Type', 'application/x-www-form-urlencoded')
-      .send({ email: email, password: password })
-      .end(function(err, res) {
-        console.log(res.text);
+  async login() {
+    this.webAuth.authorize((err, authResult) => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('successful authresult');
+      this.webAuth.client.userInfo(authResult.accessToken, (err, user) => {
+        console.log('accessToken');
+        request
+          .get('/auth/auth0/finish')
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .send({ email: user.email, password: user.password })
+          .end((err, res) => {
+            console.log(res.text);
+          });
       });
-    // auth0.parseHash({ hash: window.location.hash }, function(err, authResult) {
-    //   if (err) {
-    //     return console.log(err);
-    //   }
-    //
-    //   auth0.client.userInfo(authResult.accessToken, function(err, user) {
-    //
-    //   });
-    // });
+    });
   }
 
   handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
+    this.webAuth.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         history.replace('/home');

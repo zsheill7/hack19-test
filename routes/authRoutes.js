@@ -17,9 +17,10 @@ module.exports = app => {
     }
   );
 
-  app.get('/auth/auth0', (req, res) => {
+  app.get('/auth/auth0/finish', (req, res) => {
+    console.log('in auth/auth0');
     var { email, password } = req;
-    mongo('mongodb://zoe:rainbow78@mymongoserver.com/agromo', function(db) {
+    mongo('mongodb://zoe:rainbow78@mlab.com/agromo', function(db) {
       var users = db.collection('users');
       users.findOne({ email: email }, function(err, user) {
         if (err) return callback(err);

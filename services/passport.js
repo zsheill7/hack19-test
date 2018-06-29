@@ -3,8 +3,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const Auth0Strategy = require('passport-auth0');
-import mongo from 'mongo';
-import bcrypt from 'bcrypt';
+const mongo = require('mongo');
+const bcrypt = require('bcrypt');
 const User = mongoose.model('users');
 
 const auth0 = require('auth0-js');
