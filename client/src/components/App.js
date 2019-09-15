@@ -21,11 +21,12 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path="/upload" component={Upload} />
+
             <Route exact path="/auth/auth0" component={Auth0Component} />
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/upload" component={Upload} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
+            <Route exact path="/" component={Landing} />
           </div>
         </BrowserRouter>
       </div>

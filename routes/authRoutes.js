@@ -17,8 +17,7 @@ module.exports = app => {
     }
   );
 
-  app.get('/auth/auth0/finish', (req, res) => {
-    console.log('in auth/auth0');
+  app.post('/auth/auth0/finish', (req, res) => {
     var { email, password } = req;
     mongo('mongodb://zoe:rainbow78@mlab.com/agromo', function(db) {
       var users = db.collection('users');

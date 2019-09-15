@@ -26,23 +26,26 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  async login() {
-    this.webAuth.authorize((err, authResult) => {
-      if (err) {
-        return console.log(err);
-      }
+  login() {
+    console.log('in login');
+    this.webAuth.authorize();
+
+    /*(err, authResult) => {
       console.log('successful authresult');
       this.webAuth.client.userInfo(authResult.accessToken, (err, user) => {
         console.log('accessToken');
         request
-          .get('/auth/auth0/finish')
-          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .post('/auth/auth0/finish')
           .send({ email: user.email, password: user.password })
           .end((err, res) => {
-            console.log(res.text);
+            console.log('res');
+            console.log(res);
           });
       });
-    });
+      if (err) {
+        return console.log(err);
+      }
+    });*/
   }
 
   handleAuthentication() {

@@ -7,8 +7,7 @@ import keys from '../config/keys';
 
 class Auth0Component extends Component {
   async componentDidMount() {
-    var options = {};
-    const auth = await new Auth();
+    const auth = new Auth();
     auth.login();
   }
 
