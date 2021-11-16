@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "auth0-js": "^9.6.1",
-    "aws-sdk": "^2.265.1",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.16.2",
     "bcrypt": "^2.0.1",
     "materialize-css": "^0.99.0",
