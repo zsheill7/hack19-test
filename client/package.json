@@ -20,7 +20,7 @@
     "bcrypt": "^2.0.1",
     "materialize-css": "^0.99.0",
     "mongo": "^0.1.0",
-    "proxy-agent": "^3.0.0",
+    "proxy-agent": "^5.0.0",
     "react": "^16.0.0-alpha.13",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.0.0-alpha.13",
@@ -36,7 +36,7 @@
     "redux-thunk": "^2.2.0",
     "restuta-react-dropzone-s3-uploader": "^0.20.4",
     "superagent": "^3.8.3",
-    "superagent-proxy": "^1.0.3"
+    "superagent-proxy": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
