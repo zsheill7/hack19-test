@@ -40,6 +40,6 @@
     "react-bootstrap": "^0.32.1",
     "react-dropzone-s3-uploader": "^1.1.0",
     "sendgrid": "^5.1.2",
-    "stripe": "^4.23.1"
+    "stripe": "^11.2.0"
   }
 }
